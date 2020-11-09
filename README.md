@@ -27,7 +27,7 @@ kurang bagus, maka (9) diaktifkan mod rewrite agar urlnya menjadi http://semeruy
 zone "semerud07.pw" {
     type master;
     file "/etc/bind/jarkom/semerud07.pw";
-}
+};
 ```
 [gambar1]
 -- Kemudian buat folder baru: ```mkdir /etc/bind/jarkom```
