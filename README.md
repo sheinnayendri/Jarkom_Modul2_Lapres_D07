@@ -266,6 +266,45 @@ host -t PTR 10.151.79.66
 #### Membuatkan subdomain dengan alamat http://gunung.semeruyyy.pw yang didelegasikan pada server MOJOKERTO dan mengarah ke IP Server PROBOLINGGO.
 #
 **Pada UML MALANG**
-- 
+- Mengedit file ```/etc/bind/jarkom/semerud07.pw``` dan mengubah menjadi seperti di bawah ini:
+
+![image](https://user-images.githubusercontent.com/48936125/98796309-d16b3080-243d-11eb-9c7a-5ac9e78db858.png)
+
+- Kemudian edit file ```/etc/bind/named.conf.options``` dengan perintah ```nano /etc/bind/named.conf.options```.
+- Kemudian comment ```dnssec-validation auto;``` dan menambahkan baris berikut pada ```/etc/bind/named.conf.options```: ```allow-query{any;};```.
+
+![image](https://user-images.githubusercontent.com/48936125/98796514-0b3c3700-243e-11eb-9deb-8cb1baeab3f7.png)
+
+- Lalu mengedit file ```/etc/bind/named.conf.local``` menjadi seperti gambar di bawah:
+
+![image](https://user-images.githubusercontent.com/48936125/98796668-37f04e80-243e-11eb-8140-2145351c0d82.png)
+
+- Setelah itu melakukan restart service bind9 dengan perintah ```service bind9 restart```.
+
+**Pada UML MOJOKERTO**
+- Mengedit ```file /etc/bind/named.conf.options``` dengan perintah ```nano /etc/bind/named.conf.options```.
+- Kemudian comment ```dnssec-validation auto;``` dan tambahkan baris berikut pada ```/etc/bind/named.conf.options```: ```allow-query{any;};```.
+
+![image](https://user-images.githubusercontent.com/48936125/98796913-84d42500-243e-11eb-99ee-5d6120474489.png)
+
+- Lalu mengedit file ```/etc/bind/named.conf.local``` menjadi seperti gambar di bawah:
+
+![image](https://user-images.githubusercontent.com/48936125/98797001-9b7a7c00-243e-11eb-80d7-32f763163245.png)
+
+- Kemudian membuat direktori dengan nama delegasi, dan mengcopy ```db.local``` ke direktori baru dan mengedit namanya menjadi ```gunung.semerud07.pw```, dengan perintah:
+```
+mkdir /etc/bind/delegasi
+cp /etc/bind/db.local /etc/bind/delegasi/gunung.semerud07.pw
+```
+- Lalu mengedit file ```gunung.semerud07.pw``` menjadi seperti dibawah ini:
+
+![image](https://user-images.githubusercontent.com/48936125/98797207-dd0b2700-243e-11eb-9ce2-e27c8a380c5d.png)
+
+- Setelah itu melakukan restart service bind9 dengan perintah ```service bind9 restart```.
+
+**Pada UML GRESIK**
+- Kemudian untuk melakukan testing, maka akan digunakan perintah ```ping gunung.semerud07.pw``` pada UML GRESIK. Jika berhasil, berarti konfigurasi berhasil:
+
+![image](https://user-images.githubusercontent.com/48936125/98797799-a4b81880-243f-11eb-977a-c536ecefc8b8.png)
 
 
