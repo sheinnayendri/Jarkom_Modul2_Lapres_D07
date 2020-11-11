@@ -1,4 +1,4 @@
-# Jarkom_Modul2_Lapres_D07
+# Jarkom_Modul2_Praktikum_D07
 Laporan Resmi Modul 2 Praktikum Jaringan Komputer 2020
 #
 1. Naufal Adam Kuncoro (05111740000155)
@@ -339,7 +339,7 @@ cp /etc/bind/db.local /etc/bind/delegasi/gunung.semerud07.pw
 
 ![image](https://user-images.githubusercontent.com/48936125/98800325-d1216400-2442-11eb-9b39-974a07cef60f.png)
 
-**Browser**
+**Pada Browser**
 - Maka ketika domain ```semerud07.pw``` kita ketikkan pada browser akan terlihat seperti gambar:
 
 ![image](https://user-images.githubusercontent.com/48936125/98800380-e1394380-2442-11eb-9d66-32c6a01a66ff.png)
@@ -354,7 +354,7 @@ cp /etc/bind/db.local /etc/bind/delegasi/gunung.semerud07.pw
 
 - Kemudian kita melakukan restart apache, menggunakan command ```service apache2 restart```.
 
-**Browser**
+**Pada Browser**
 - Maka ketika domain ```semerud07.pw/home``` kita ketikkan pada browser akan terlihat seperti gambar:
 
 ![image](https://user-images.githubusercontent.com/48936125/98801455-653ffb00-2444-11eb-90eb-b23cb4cb3dbd.png)
@@ -380,7 +380,7 @@ cp /etc/bind/db.local /etc/bind/delegasi/gunung.semerud07.pw
 
 ![image](https://user-images.githubusercontent.com/48936125/98801839-fa42f400-2444-11eb-81f9-d1a024441b65.png)
 
-**Browser**
+**Pada Browser**
 - Maka ketika domain ```penanjakan.semerud07.pw``` kita ketikkan pada browser akan terlihat seperti gambar:
 
 ![image](https://user-images.githubusercontent.com/48936125/98801879-0e86f100-2445-11eb-9b51-02a2e56deeb6.png)
@@ -395,7 +395,7 @@ cp /etc/bind/db.local /etc/bind/delegasi/gunung.semerud07.pw
 
 - Kemudian kita melakukan restart apache, menggunakan command ```service apache2 restart```.
 
-**Browser**
+**Pada Browser**
 - Maka ketika domain ```penanjakan.semerud07.pw/public``` kita ketikkan di browser, kita dapat melakukan directory listing:
 
 ![image](https://user-images.githubusercontent.com/48936125/98801879-0e86f100-2445-11eb-9b51-02a2e56deeb6.png)
@@ -409,4 +409,86 @@ cp /etc/bind/db.local /etc/bind/delegasi/gunung.semerud07.pw
 ![image](https://user-images.githubusercontent.com/48936125/98802677-32970200-2446-11eb-9769-daef68e41439.png)
 
 ### Soal12
-####
+#### Untuk mengatasi HTTP Error code 404, disediakan file 404.html pada folder /errors untuk mengganti error default 404 dari Apache.
+#
+**Pada UML PROBOLINGGO**
+- Berpindah direktori dengan command ```cd /etc/apache2/sites-available``` dan melakukan edit file ```penanjakan.semerud07.pw``` dengan command ```nano penanjakan.semerud07.pw``` dan menambahkan konfigurasi seperti gambar berikut:
+```
+ErrorDocument 404 /errors/404.html
+```
+
+![image](https://user-images.githubusercontent.com/48936125/98803791-da60ff80-2447-11eb-92e9-ae36172f6251.png)
+
+- Kemudian kita melakukan restart apache, menggunakan command ```service apache2 restart```.
+
+**Pada Browser**
+- Maka ketika kita mengakses domain ```penanjakan.semerud07.pw/publoc``` (terdapat **typo**), yang muncul ada file 404.html dari folder /errors:
+
+![image](https://user-images.githubusercontent.com/48936125/98803566-90781980-2447-11eb-8a92-8af49704ba3b.png)
+
+### Soal13
+#### Untuk mengakses file assets javascript awalnya harus menggunakan url http://penanjakan.semeruyyy.pw/public/javascripts. Karena terlalu panjang maka dibuatkan konfigurasi virtual host agar ketika mengakses file assets menjadi http://penanjakan.semeruyyy.pw/js.
+#
+**Pada UML PROBOLINGGO**
+- Berpindah direktori dengan command ```cd /etc/apache2/sites-available``` dan melakukan edit file ```penanjakan.semerud07.pw``` dengan command ```nano penanjakan.semerud07.pw``` dan menambahkan konfigurasi seperti gambar berikut (alias):
+
+![image](https://user-images.githubusercontent.com/48936125/98803711-c2897b80-2447-11eb-9e2a-8c1fcb233c17.png)
+
+### Soal14
+#### Web http://naik.gunung.semeruyyy.pw sudah bisa diakses hanya dengan menggunakan port 8888. DocumentRoot web berada pada /var/www/naik.gunung.semeruyyy.pw.
+#
+**Pada UML PROBOLINGGO**
+- Berpindah direktori dengan command ```cd /etc/apache2/sites-available``` dan melakukan copy file default menjadi file baru bernama domain yang ingin kita buat dengan command ```cp default naik.gunung.semerud07.pw```.
+- Kemudian kita melakukan edit file ```penanjakan.semerud07.pw``` dengan command ```nano penanjakan.semerud07.pw``` dan mengubah VirtualHost serta DocumentRoot serta menambahkan ServerName dan ServerAlias seperti gambar di bawah:
+
+![image](https://user-images.githubusercontent.com/48936125/98804196-70952580-2448-11eb-930f-3c59a6e1f56f.png)
+
+- Kemudian kita melakukan restart apache, menggunakan command ```service apache2 restart```.
+- Lalu kita berpindah direktori ke ```cd /var/www/``` yaitu tempat isi dari web server kita. Di sini membuat folder baru dengan nama ```naik.gunung.semerud07.pw```. Kemudian kita cd ke folder baru ini.
+- Di folder ```/var/www/naik.gunung.semerud07.pw``` ini kita akan mendownload file zip yang diberikan dengan command ```wget 10.151.36.202/naik.gunung.semeru.pw.zip```. Kemudian kita unzip. Setelah itu semua isi file zip akan kita pindah ke direktori tempat kita berada yaitu ```/var/www/naik.gunung.semerud07.pw```:
+
+![image](https://user-images.githubusercontent.com/48936125/98804258-89054000-2448-11eb-95d3-426393699f3c.png)
+
+- Kemudian kita juga harus mengaktifkan port 8888 dengan mengedit file: ```nano /etc/apache2/ports.conf``` menjadi:
+
+![image](https://user-images.githubusercontent.com/48936125/98804996-88b97480-2449-11eb-8c0a-af35d3e45868.png)
+
+- Unutuk mengaktifkan maka akan dijalankan perintah:
+```
+a2ensite naik.gunung.semerud07.pw
+service apache2 restart
+```
+
+- Maka domain ```naik.gunung.semerud07.pw:8888``` akan dapat diakses pada browser.
+
+### Soal15
+#### Dikarenakan web http://naik.gunung.semeruyyy.pw bersifat private, Bibah meminta kamu membuat web http://naik.gunung.semeruyyy.pw agar diberi autentikasi password dengan username “semeru” dan password “kuynaikgunung” supaya aman dan tidak sembarang orang bisa mengaksesnya.
+#
+**Pada UML PROBOLINGGO**
+- Mengedit file: ```nano /etc/apache2/jarkom/naik.gunung.semerud07.pw``` dan menambahkan konfigurasi:
+
+![image](https://user-images.githubusercontent.com/48936125/98805309-f796cd80-2449-11eb-8ac5-a79465eb9e86.png)
+
+- Sebelumnya, akan dibuat akun autentikasi baru dengan cara melakukan instalasi terlebih dahulu: 
+```
+apt-get update
+apt-get install apache2-utils
+```
+
+- Kemudian menggunakan command ```htpasswd -c /etc/apache2/.htpasswd semeru``` yang berarti ingin membuat akun autentikasi baru dengan username **semeru**. Kita akan diminta untuk memasukkan password baru dan confirm password tersebut (diisi **kuynaikgunung**):
+
+![image](https://user-images.githubusercontent.com/48936125/98805750-a1765a00-244a-11eb-97ff-1d445c310548.png)
+
+- Lalu service akan direstart dengan perintah: ```service apache2 restart```.
+
+**Pada Browser**
+- Ketika kita mengakses domain ```naik.gunung.semerud07.pw:8888``` maka akan diminta untuk memasukkan username dan password terlebih dahulu:
+
+![image](https://user-images.githubusercontent.com/48936125/98805870-db476080-244a-11eb-9f51-5a5ae41eac65.png)
+
+![image](https://user-images.githubusercontent.com/48936125/98805893-e3070500-244a-11eb-80f4-499d8a6a19e7.png)
+
+![image](https://user-images.githubusercontent.com/48936125/98805904-e8644f80-244a-11eb-802d-69bb48b82258.png)
+
+### Soal16
+#### 
