@@ -1,6 +1,11 @@
 # Jarkom_Modul2_Lapres_D07
 Laporan Resmi Modul 2 Praktikum Jaringan Komputer 2020
+#
+1. Naufal Adam Kuncoro (05111740000155)
+2. Sheinna Yendri (05111840000038)
+#
 
+## Setting Topologi
 Sebelum mengerjakan soal 1-17, perlu dilakukan setting topologi terlebih dahulu dengan membuat file **topologi.sh** yang berisi:
 ```
 # Switch
@@ -117,24 +122,29 @@ Serta memberikan perintah ```apt-get update``` juga pada setiap UML untuk melaku
 
 Setelah itu dapat dimulai pengerjaan Soal Shift.
 
-**Soal**
-Kalian diminta untuk membuat sebuah website utama dengan (1) alamat http://semeruyyy.pw yang
-memiliki (2) alias http://www.semeruyyy.pw, dan (3) subdomain
-http://www.penanjakan.semeruyyy.pw yang diatur DNS-nya pada MALANG dan mengarah ke IP
-Server PROBOLINGGO serta dibuatkan (4) reverse domain untuk domain utama. Untuk mengantisipasi
-server dicuri/rusak, Bibah minta dibuatkan (5) DNS Server Slave pada MOJOKERTO agar Bibah tidak
-terganggu menikmati keindahan Semeru pada Website. Selain website utama Bibah juga meminta
-dibuatkan (6) subdomain dengan alamat http://gunung.semeruyyy.pw yang didelegasikan pada server
-MOJOKERTO dan mengarah ke IP Server PROBOLINGGO. Bibah juga ingin memberi petunjuk
-mendaki gunung semeru kepada anggota komunitas sehingga dia meminta dibuatkan (7) subdomain
-dengan nama http://naik.gunung.semeruyyy.pw, domain ini diarahkan ke IP Server PROBOLINGGO.
-Setelah selesai membuat keseluruhan domain, kamu diminta untuk segera mengatur web server. (8)
-Domain http://semeruyyy.pw memiliki DocumentRoot pada /var/www/semeruyyy.pw. Awalnya web
-dapat diakses menggunakan alamat http://semeruyyy.pw/index.php/home. Karena dirasa alamat urlnya
-kurang bagus, maka (9) diaktifkan mod rewrite agar urlnya menjadi http://semeruyyy.pw/home.
-(10) Web http://penanjakan.semeruyyy.pw akan digunakan untuk menyimpan assets file yang
+## Pengerjaan Soal
+1. [Soal1](#soal1)
+2. [Soal2](#soal2)
+3. [Soal3](#soal3)
+4. [Soal4](#soal4)
+5. [Soal5](#soal5)
+6. [Soal6](#soal6)
+7. [Soal7](#soal7)
+8. [Soal8](#soal8)
+9. [Soal9](#soal9)
+10. [Soal10](#soal10)
+11. [Soal11](#soal11)
+12. [Soal11](#soal12)
+13. [Soal11](#soal13)
+14. [Soal11](#soal14)
+15. [Soal11](#soal15)
+16. [Soal11](#soal16)
+17. [Soal11](#soal17)
+#
 
-1. Membuat sebuah alamat http://semeruyyy.pw
+### Soal1
+#### Membuat sebuah alamat http://semeruyyy.pw
+#
 **Pada UML MALANG**
 - Ketikkan ```apt-get install bind9 -y```
 - Kemudian ```nano /etc/bind/named.conf.local```
@@ -169,7 +179,9 @@ nameserver 10.151.79.66
 
 ![image](https://user-images.githubusercontent.com/48936125/98771283-a8837500-2416-11eb-9bc6-cc1d48e7d1be.png)
 
-2. Memberikan alias http://www.semeruyyy.pw
+### Soal2
+#### Memberikan alias http://www.semeruyyy.pw
+#
 **Pada UML MALANG**
 - Ketikkan ```nano /etc/bind/jarkom/semerud07.pw``` untuk mengedit file tersebut, ditambahkan perintah seperti gambar di bawah:
 
@@ -182,7 +194,9 @@ nameserver 10.151.79.66
 
 ![image](https://user-images.githubusercontent.com/48936125/98771515-31021580-2417-11eb-9f32-f4aa346e599f.png)
 
-3. Membuat subdomain http://penanjakan.semeruyyy.pw yang diatur DNS-nya pada MALANG dan mengarah ke IP Server PROBOLINGGO
+### Soal3
+#### Membuat subdomain http://penanjakan.semeruyyy.pw yang diatur DNS-nya pada MALANG dan mengarah ke IP Server PROBOLINGGO
+#
 **Pada UML MALANG**
 - Ketikkan ```nano /etc/bind/jarkom/semerud07.pw``` untuk mengedit file tersebut, ditambahkan perintah seperti gambar di bawah:
 
@@ -195,7 +209,9 @@ nameserver 10.151.79.66
 
 ![image](https://user-images.githubusercontent.com/48936125/98771632-7b839200-2417-11eb-9f01-0e567b20e074.png)
 
-4. Membuat reverse domain untuk domain utama
+### Soal4
+#### Membuat reverse domain untuk domain utama
+#
 - Mengedit file /etc/bind/named.conf.local dengan perintah ```nano /etc/bind/named.conf.local```, lalu menambahkan konfigurasi seperti pada gambar: 
 
 ![image](https://user-images.githubusercontent.com/48936125/98771772-c6050e80-2417-11eb-9ee4-656fb9732606.png)
@@ -218,5 +234,38 @@ host -t PTR 10.151.79.66
 
 ![image](https://user-images.githubusercontent.com/48936125/98772265-f13c2d80-2418-11eb-8a7f-c2798080e17d.png)
 
-5. 
+### Soal5
+#### Membuatkan DNS Server Slave pada MOJOKERTO agar Bibah tidak terganggu menikmati keindahan Semeru pada Website.
+#
+**Pada UML MALANG**
+- Mengedit file ```/etc/bind/named.conf.local``` menjadi:
+
+![image](https://user-images.githubusercontent.com/48936125/98772952-75db7b80-241a-11eb-887e-be9c28534004.png)
+
+- Kemudian setelah itu melakukan restart service bind9 dengan perintah ```service bind9 restart```.
+
+**Pada UML MOJOKERTO**
+- Melakukan update dengan perintah ```apt-get update``` dan install bind9 dengan ```apt-get install bind9 -y```. Kemudian buka file ```/etc/bind/named.conf.local``` pada MOJOKERTO dan tambahkan syntax seperti pada gambar:
+
+![image](https://user-images.githubusercontent.com/48936125/98773059-b89d5380-241a-11eb-8072-494d321429b9.png)
+
+- Kemudian setelah itu melakukan restart service bind9 dengan perintah ```service bind9 restart```.
+
+**Pada UML MALANG**
+- Untuk mengecek apakah konfigurasi berhasil, maka service pada UML MALANG akan dihentikan dengan perintah ```service bind9 stop```:
+
+![image](https://user-images.githubusercontent.com/48936125/98773144-dd91c680-241a-11eb-846f-0cafd1974271.png)
+
+**Pada UML GRESIK**
+- Pada file ```/etc/bind/resolv.conf``` perlu ditambahkan nameserver yang mengarah ke IP MOJOKERTO juga, yaitu menambahkan ```nameserver 10.151.79.67```.
+- Kemudian untuk mengecek apakah DNS Slave sudah berhasil, dilakukan perintah ```ping semerud07.pw```. Karena ping berhasil, berarti konfigurasi DNS Slave berhasil:
+
+![image](https://user-images.githubusercontent.com/48936125/98773307-3d886d00-241b-11eb-94d0-e4cfdba6671f.png)
+
+### Soal6
+#### Membuatkan subdomain dengan alamat http://gunung.semeruyyy.pw yang didelegasikan pada server MOJOKERTO dan mengarah ke IP Server PROBOLINGGO.
+#
+**Pada UML MALANG**
+- 
+
 
