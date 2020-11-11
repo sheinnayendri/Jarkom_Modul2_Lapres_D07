@@ -491,4 +491,39 @@ apt-get install apache2-utils
 ![image](https://user-images.githubusercontent.com/48936125/98805904-e8644f80-244a-11eb-802d-69bb48b82258.png)
 
 ### Soal16
-#### 
+#### Saat Bibah mengunjungi IP PROBOLINGGO, yang muncul bukan web utama http://semeruyyy.pw melainkan laman default Apache yang bertuliskan “It works!”. (16) Karena dirasa kurang profesional, maka setiap Bibah mengunjungi IP PROBOLINGGO akan dialihkan secara otomatis ke http://semeruyyy.pw.
+#
+**Pada UML PROBOLINGGO**
+- Akan mengedit file: ```nano /etc/apache2/sites-available/deafult```, di mana DocumentRoot akan diarahkan ke ```/var/www/semerud07.pw```.
+
+**Pada Browser**
+- Sehingga saat IP PROBOLINGGO (10.151.79.68) diakses, yang muncul adalah website semerud07.pw:
+
+![image](https://user-images.githubusercontent.com/48936125/98806440-cb7c4c00-244b-11eb-907e-d027d2a21b13.png)
+
+### Soal17
+#### Karena pengunjung pada /var/www/penanjakan.semeruyyy.pw/public/images sangat banyak maka semua request gambar yang memiliki substring “semeru” akan diarahkan menuju semeru.jpg.
+#
+**Pada UML MALANG**
+- Akan menambahkan file baru ```.htaccess``` pada folder ```/var/www/penanjakan.semerud07.pw```, di mana file tersebut akan dimodifikasi menjadi:
+
+![image](https://user-images.githubusercontent.com/48936125/98806636-0ed6ba80-244c-11eb-8e55-fe8f1f7f9614.png)
+
+- Kemudian pada file ```/etc/apache2/sites-available/penanjakan.semerud07.pw``` juga akan dimodifikasi agar file ```.htaccess``` dapat berjalan, yaitu dengan menambahkan:
+
+![image](https://user-images.githubusercontent.com/48936125/98806729-36c61e00-244c-11eb-9add-428d3e888ce8.png)
+
+**Pada Browser**
+- Sehingga ketika kita mencoba mengakses domain ```penanjakan.semerud07.pw/public/images/bukansemeruaja.jpg```, karena gambar tersebut memiliki substring **semeru**, akan diarahkan menuju ```semeru.jpg``` (yang ditampilkan bukan gambar bukansemeru.aja melainkan gambar semeru.jpg):
+
+![image](https://user-images.githubusercontent.com/48936125/98806941-83a9f480-244c-11eb-8822-7629eb82ea35.png)
+
+- Tentu saja untuk gambar ```semeru.jpg``` akan tetap menampilkan gambarnya sendiri:
+
+![image](https://user-images.githubusercontent.com/48936125/98807008-99b7b500-244c-11eb-8b03-05d67bad15ee.png)
+
+- Dan untuk 2 gambar lainnya yang tidak mengandung substring **semeru** yaitu ```mahameru.jpg``` dan ```ranu-kumbolo.jpg```, maka akan tetap menampilkan gambar asli mereka masing-masing:
+
+![image](https://user-images.githubusercontent.com/48936125/98807079-b81db080-244c-11eb-8fcc-07b558f37061.png)
+
+![image](https://user-images.githubusercontent.com/48936125/98807114-c23faf00-244c-11eb-8c5d-2a3edb983339.png)
