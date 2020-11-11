@@ -307,4 +307,106 @@ cp /etc/bind/db.local /etc/bind/delegasi/gunung.semerud07.pw
 
 ![image](https://user-images.githubusercontent.com/48936125/98797799-a4b81880-243f-11eb-977a-c536ecefc8b8.png)
 
+### Soal7
+#### Membuat subdomain dengan nama http://naik.gunung.semeruyyy.pw, domain ini diarahkan ke IP Server PROBOLINGGO.
+#
+**Pada UML MOJOKERTO**
+- Mengedit file ```/etc/bind/delegasi/gunung.semerud07.pw dan menambahkan seperti konfigurasi di gambar:
 
+![image](https://user-images.githubusercontent.com/48936125/98799245-71768900-2441-11eb-8a66-78db1157dd7c.png)
+
+- Kemudian melakukan restart service bind9 dengan perintah ```service bind9 restart```.
+
+**Pada UML GRESIK**
+- Untuk mengecek apakah konfigurasi sudah benar, dilakukan ```ping naik.gunung.semerud07.pw```, karena berhasil berarti konfigurasi sudah benar:
+
+![image](https://user-images.githubusercontent.com/48936125/98799384-9cf97380-2441-11eb-87bc-faf589d8ba9f.png)
+
+### Soal8
+#### Setelah selesai membuat keseluruhan domain, kamu diminta untuk segera mengatur web server. Domain http://semeruyyy.pw memiliki DocumentRoot pada /var/www/semeruyyy.pw.
+#
+**Pada UML PROBOLINGGO**
+- Pertama-tama melakukan instalasi Apache2 dan PHP5 dengan perintah ```apt-get install apache2``` dan ```apt-get install php5```.
+- Setelah terinstall, maka akan pindah ke direktori ```/etc/apache2/sites-available``` untuk membuat sebuah web server baru dengan nama ```semerud07.pw```.
+- Berpindah dengan command ```cd /etc/apache2/sites-available``` dan melakukan copy file default menjadi file baru bernama domain yang ingin kita buat dengan command ```cp default semerud07.pw```.
+- Kemudian kita melakukan edit file ```semerud07.pw``` dengan command ```nano semerud07.pw``` dan mengubah DocumentRoot serta menambahkan ServerName dan ServerAlias seperti gambar di bawah:
+
+![image](https://user-images.githubusercontent.com/48936125/98800027-6ff99080-2442-11eb-8849-13bcfd1cd6a8.png)
+
+- Kemudian kita melakukan restart apache, menggunakan command ```service apache2 restart```.
+- Lalu kita berpindah direktori ke ```cd /var/www/``` yaitu tempat isi dari web server kita. Di sini membuat folder baru dengan nama ```semerud07.pw```. Kemudian kita cd ke folder baru ini.
+- Di folder ```/var/www/semerud07.pw``` ini kita akan mendownload file zip yang diberikan dengan command ```wget 10.151.36.202/semeru.pw.zip```. Kemudian kita unzip (install terlebih dahulu). Setelah itu semua isi file zip akan kita pindah ke direktori tempat kita berada yaitu ```/var/www/semerud07.pw```:
+
+![image](https://user-images.githubusercontent.com/48936125/98800325-d1216400-2442-11eb-9b39-974a07cef60f.png)
+
+**Browser**
+- Maka ketika domain ```semerud07.pw``` kita ketikkan pada browser akan terlihat seperti gambar:
+
+![image](https://user-images.githubusercontent.com/48936125/98800380-e1394380-2442-11eb-9d66-32c6a01a66ff.png)
+
+### Soal9
+#### Mengubah agar alamat http://semeruyyy.pw/index.php/home urlnya berubah menjadi http://semeruyyy.pw/home
+#
+**Pada UML PROBOLINGGO**
+- Kita kembali ke direktori: ```cd /etc/apache2/sites-available``` dan mengedit file: ```nano semerud07.pw```, ditambahkan alias seperti gambar di bawah:
+
+![image](https://user-images.githubusercontent.com/48936125/98800651-4725cb00-2443-11eb-9bb4-6d6aa88d3e70.png)
+
+- Kemudian kita melakukan restart apache, menggunakan command ```service apache2 restart```.
+
+**Browser**
+- Maka ketika domain ```semerud07.pw/home``` kita ketikkan pada browser akan terlihat seperti gambar:
+
+![image](https://user-images.githubusercontent.com/48936125/98801455-653ffb00-2444-11eb-90eb-b23cb4cb3dbd.png)
+
+### Soal10
+#### Web http://penanjakan.semeruyyy.pw akan digunakan untuk menyimpan assets file yang memiliki DocumentRoot pada /var/www/penanjakan.semeruyyy.pw dan memiliki struktur folder sebagai berikut:
+```
+    /var/www/penanjakan.semeruyyy.pw
+    /public/javascripts
+    /public/css
+    /public/images
+```
+#
+**Pada UML PROBOLINGGO**
+- Berpindah direktori dengan command ```cd /etc/apache2/sites-available``` dan melakukan copy file default menjadi file baru bernama domain yang ingin kita buat dengan command ```cp default penanjakan.semerud07.pw```.
+- Kemudian kita melakukan edit file ```penanjakan.semerud07.pw``` dengan command ```nano penanjakan.semerud07.pw``` dan mengubah DocumentRoot serta menambahkan ServerName dan ServerAlias seperti gambar di bawah:
+
+![image](https://user-images.githubusercontent.com/48936125/98801698-c36cde00-2444-11eb-8633-e2e18cf08145.png)
+
+- Kemudian kita melakukan restart apache, menggunakan command ```service apache2 restart```.
+- Lalu kita berpindah direktori ke ```cd /var/www/``` yaitu tempat isi dari web server kita. Di sini membuat folder baru dengan nama ```penanjakan.semerud07.pw```. Kemudian kita cd ke folder baru ini.
+- Di folder ```/var/www/penanjakan.semerud07.pw``` ini kita akan mendownload file zip yang diberikan dengan command ```wget 10.151.36.202/penanjakan.semeru.pw.zip```. Kemudian kita unzip. Setelah itu semua isi file zip akan kita pindah ke direktori tempat kita berada yaitu ```/var/www/penanjakan.semerud07.pw```:
+
+![image](https://user-images.githubusercontent.com/48936125/98801839-fa42f400-2444-11eb-81f9-d1a024441b65.png)
+
+**Browser**
+- Maka ketika domain ```penanjakan.semerud07.pw``` kita ketikkan pada browser akan terlihat seperti gambar:
+
+![image](https://user-images.githubusercontent.com/48936125/98801879-0e86f100-2445-11eb-9b51-02a2e56deeb6.png)
+
+### Soal11
+#### Pada folder /public dibolehkan directory listing namun untuk folder yang berada di dalamnya tidak dibolehkan (penanjakan.semerud07.pw).
+#
+**Pada UML PROBOLINGGO**
+- Berpindah direktori dengan command ```cd /etc/apache2/sites-available``` dan melakukan edit file ```penanjakan.semerud07.pw``` dengan command ```nano penanjakan.semerud07.pw``` dan menambahkan konfigurasi seperti gambar berikut:
+
+![image](https://user-images.githubusercontent.com/48936125/98802078-51e15f80-2445-11eb-9de2-f3d1c24873c6.png)
+
+- Kemudian kita melakukan restart apache, menggunakan command ```service apache2 restart```.
+
+**Browser**
+- Maka ketika domain ```penanjakan.semerud07.pw/public``` kita ketikkan di browser, kita dapat melakukan directory listing:
+
+![image](https://user-images.githubusercontent.com/48936125/98801879-0e86f100-2445-11eb-9b51-02a2e56deeb6.png)
+
+- Sedangkan ketika kita mengakses domain ```penanjakan.semerud07.pw/public/css``` ataupun ```penanjakan.semerud07.pw/public/javascripts``` atau ```penanjakan.semerud07.pw/public/images```:
+
+![image](https://user-images.githubusercontent.com/48936125/98802614-227f2280-2446-11eb-84c2-42caaf3e2101.png)
+
+![image](https://user-images.githubusercontent.com/48936125/98802646-2a3ec700-2446-11eb-9877-1d78972e4f58.png)
+
+![image](https://user-images.githubusercontent.com/48936125/98802677-32970200-2446-11eb-9769-daef68e41439.png)
+
+### Soal12
+####
