@@ -134,12 +134,12 @@ Setelah itu dapat dimulai pengerjaan Soal Shift.
 9. [Soal9](#soal9)
 10. [Soal10](#soal10)
 11. [Soal11](#soal11)
-12. [Soal11](#soal12)
-13. [Soal11](#soal13)
-14. [Soal11](#soal14)
-15. [Soal11](#soal15)
-16. [Soal11](#soal16)
-17. [Soal11](#soal17)
+12. [Soal12](#soal12)
+13. [Soal13](#soal13)
+14. [Soal14](#soal14)
+15. [Soal15](#soal15)
+16. [Soal16](#soal16)
+17. [Soal17](#soal17)
 #
 
 ### Soal1
