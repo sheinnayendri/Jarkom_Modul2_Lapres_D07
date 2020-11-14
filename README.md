@@ -432,7 +432,12 @@ ErrorDocument 404 /errors/404.html
 **Pada UML PROBOLINGGO**
 - Berpindah direktori dengan command ```cd /etc/apache2/sites-available``` dan melakukan edit file ```penanjakan.semerud07.pw``` dengan command ```nano penanjakan.semerud07.pw``` dan menambahkan konfigurasi seperti gambar berikut (alias):
 
-![image](https://user-images.githubusercontent.com/48936125/98803711-c2897b80-2447-11eb-9e2a-8c1fcb233c17.png)
+![image](https://user-images.githubusercontent.com/48936125/99149292-9710c600-26bf-11eb-8cb0-293cf660c3dc.png)
+
+**Pada Browser**
+- Maka ketika mengakses alamat ```penanjakan.semerud07.pw/js``` akan diarahkan ke ```penanjakan.semerud07.pw/public/javascripts/```, seperti gambar berikut:
+
+![image](https://user-images.githubusercontent.com/48936125/99149335-e1924280-26bf-11eb-8855-5fabecc61c46.png)
 
 ### Soal14
 #### Web http://naik.gunung.semeruyyy.pw sudah bisa diakses hanya dengan menggunakan port 8888. DocumentRoot web berada pada /var/www/naik.gunung.semeruyyy.pw.
